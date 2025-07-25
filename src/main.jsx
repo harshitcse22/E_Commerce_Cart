@@ -3,6 +3,7 @@ import './index.css'
 import App from './App.jsx'
 import React from 'react'
 import { ClerkProvider } from '@clerk/clerk-react'
+import { DataProvider } from './context/DataContext.jsx'
 
 // import { loadStripe } from "@stripe/stripe-js";
 
@@ -14,7 +15,9 @@ if (!PUBLISHABLE_KEY) {
 }
 
 createRoot(document.getElementById('root')).render(
-   <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+      <DataProvider>
+   <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
     <App />
     </ClerkProvider>
+     </DataProvider>,
 )
